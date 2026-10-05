@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>英打遊戲版本二</title>
+<style>
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;background:#fff;color:#222;font-family:"PingFang TC","Microsoft JhengHei",system-ui,sans-serif;padding:20px;box-sizing:border-box}
+h1{margin:0;font-size:2rem}
+img{max-width:100%;width:720px;height:auto;border-radius:12px}
+button{font:inherit;font-size:1.2rem;padding:10px 36px;cursor:pointer}
+#msg{color:#b00020;min-height:1.4em;margin:0}
+</style>
+</head>
+<body>
+<h1>英打遊戲版本二</h1>
+<img src="assets/keyboard.png" alt="英文鍵盤" onerror="msg.textContent='找不到 assets/keyboard.png，請確認圖片位置。'">
+<button id="go">開始</button>
+<p id="msg"></p>
+<audio id="beep" src="assets/beep.wav" preload="auto"></audio>
+<script>
+const msg=document.getElementById('msg'),beep=document.getElementById('beep');
+beep.onerror=()=>msg.textContent='找不到 assets/beep.wav，請確認聲音檔位置。';
+document.getElementById('go').onclick=()=>{beep.currentTime=0;beep.play().catch(()=>msg.textContent='聲音無法播放，請檢查音量或檔案。')};
+</script>
+</body>
+</html>
